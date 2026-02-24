@@ -22,7 +22,9 @@ def contagem():
 
         filtro = st.text_input("Digite o material ou N° de série de série que deseja encontrar")    
 
-        leitor_sap  = pd.read_excel(df)
+        colunas = ["Material","Texto breve material","Utilização livre"]
+
+        leitor_sap  = pd.read_excel(df,usecols=colunas)
 
         newleitor = leitor_sap[leitor_sap["Material"].astype(str).str.contains(filtro,case=False,na=False)]
 
@@ -35,7 +37,9 @@ def contagem():
         gridOptions = gb.build()
 
         with col1:
-            st.metric("Quantidade de produto",len(newleitor))
+            if not newleitor.empty:
+                utilizacao = newleitor["Utilização livre"].iloc[0]
+                st.metric("Quantidade de produto",utilizacao)
 
         agora = datetime.now().strftime("%d/%m/%Y")
 
