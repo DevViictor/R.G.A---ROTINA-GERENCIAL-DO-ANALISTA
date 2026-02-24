@@ -37,7 +37,7 @@ def contagem():
         gridOptions = gb.build()
 
         with col1:
-            if not filtro and not newleitor.empty:
+            if filtro and not newleitor.empty:
                 utilizacao = newleitor["Utilização livre"].iloc[0]
                 st.metric("Quantidade de produto",utilizacao)
 
