@@ -22,12 +22,18 @@ def contagem():
 
         filtro = st.text_input("Digite o material ou N° de série de série que deseja encontrar")    
 
-        colunas = ["Material","Texto breve material","Utilização livre"]
+        
 
-        leitor_sap  = pd.read_excel(df,usecols=colunas)
-
-        newleitor = leitor_sap[leitor_sap["Material"].astype(str).str.contains(filtro,case=False,na=False)]
-
+        try:
+            colunas = ["Material","Texto breve material","Utilização livre"]
+            leitor_sap  = pd.read_excel(df,usecols=colunas)
+            newleitor = leitor_sap[leitor_sap["Material"].astype(str).str.contains(filtro,case=False,na=False)]
+        
+        except ValueError:
+            st.error("⚠️ A planilha não contém as colunas necessárias.")
+            st.info("As colunas esperadas são: Material, Texto breve material e Utilização livre.")
+            return
+        
         col1,col2 = st.columns(2)
 
         gb = GridOptionsBuilder.from_dataframe(newleitor)
