@@ -20,7 +20,7 @@ def contagem():
 
     if df is not None:
 
-        filtro = st.text_input("Digite o material ou N° de série de série que deseja encontrar")    
+        filtro = st.text_input("Digite o material do produto que deseja encontrar")    
 
         
 
