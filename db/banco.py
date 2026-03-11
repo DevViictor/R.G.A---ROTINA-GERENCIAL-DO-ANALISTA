@@ -30,7 +30,7 @@ def enviar_tarefa(titulo,descricao,periodo,data,loja):
     cursor.close()
     conn.close() 
 
-def enviar_registro_attach(nome,ap,ac,data,loja):
+def enviar_registro_attach(nome,ap,ac,data,loja,nota):
     conn = conexao()
     cursor = conn.cursor()
 
@@ -40,11 +40,12 @@ def enviar_registro_attach(nome,ap,ac,data,loja):
         aparelho,
         acessorio,
         data,
-        loja
-        )VALUES(%s,%s,%s,%s,%s)
+        loja,
+        nota
+        )VALUES(%s,%s,%s,%s,%s,%s)
 """
     cursor.execute(
-    sql,(nome,ap,ac,data,loja))
+    sql,(nome,ap,ac,data,loja,nota))
     conn.commit()
     cursor.close()
     conn.close() 
