@@ -3,7 +3,7 @@ import pandas as pd
 from db.banco import enviar_registro_attach
 from streamlit_extras.colored_header import colored_header
 
-op == st.sidebar.selectbox("Selecione a opção desejada: ")
+
 
 def registro_attach():
 
