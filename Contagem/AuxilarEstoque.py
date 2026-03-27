@@ -25,9 +25,13 @@ def contagem():
         
 
         try:
-            colunas = ["Material","Texto breve material","Utilização livre"]
+            colunas = ["Material","Texto breve material","N° de série"]
             leitor_sap  = pd.read_excel(df,usecols=colunas)
-            newleitor = leitor_sap[leitor_sap["Material"].astype(str).str.contains(filtro,case=False,na=False)]
+            newleitor = leitor_sap[
+                leitor_sap["Material"].astype(str).str.contains(filtro, case=False, na=False) |
+                leitor_sap["N° de série"].astype(str).str.contains(filtro, case=False, na=False)
+            ]
+            
         
         except ValueError:
             st.error("⚠️ A planilha não contém as colunas necessárias.")
@@ -45,8 +49,7 @@ def contagem():
         with col1:
             
             if not newleitor.empty:
-                utilizacao = newleitor["Utilização livre"].iloc[0]
-                st.metric("Quantidade de produto",utilizacao)
+                st.metric("Quantidade de produto",len(newleitor))
 
         agora = datetime.now().strftime("%d/%m/%Y")
 
@@ -65,7 +68,3 @@ def contagem():
     
     else:
         st.warning("Selecione a planilha que deseja visualizar")
-
-    
-
-    
