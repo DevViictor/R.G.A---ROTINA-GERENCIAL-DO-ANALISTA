@@ -22,20 +22,6 @@ with st.sidebar:
         }
     )
 
- 
-    if op == "Attach":
-        sub_menu = option_menu("ATTACH",
-                               ["Registrar","Relátorio"],
-                               icons = ["tablet-fill"],
-        menu_icon="cast",
-        default_index = 0,
-        styles = {
-            "container": {
-                 "background-color": "#310327ff"
-            }
-        }
-    )
-        
     
 if op == "Criação":
     tarefas_iguatemi()
@@ -46,5 +32,5 @@ if op == "Tarefas":
 if op =="Estoque":
     contagem()
 
-if sub_menu == "Registrar":
+if op == "Attach":
     registro_attach()
