@@ -16,7 +16,7 @@ def contagem():
         color_name="orange-70"
     )
         
-    df = st.file_uploader("Carregue o arquivo abaixo: ",type=["xlsx", "xls"])
+    df = st.file_uploader("Carregue o arquivo abaixo: ",type=["xlsx", "xls", "ods"])
 
     if df is not None:
 
